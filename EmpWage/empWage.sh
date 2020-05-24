@@ -1,13 +1,14 @@
 #!/bin/bash -x
 
-isPresent=1
+isParTime=1
+empRatePerHr=20
 randomcheck=$((RANDOM%2))
 
-if [ $isPresent -eq $randomcheck ]
+if [ $isParTime -eq $randomcheck ]
 then
-     empRatePerHr=20
      empHrs=8
-     salery=$(($empHrs*$empRatePerHr))
 else
-    salery=0
+     empHrs=0
 fi
+
+salery=$(($empHrs*$empRatePerHr))
