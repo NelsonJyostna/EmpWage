@@ -12,6 +12,8 @@ NUM_WORKING_DAYS=20
 totalEmpHrs=0
 totalWorkingDays=0
 
+declare -A dailWage
+
 function getWorkHrs() {
   local empCheck=$1
   case $empCheck in
@@ -40,8 +42,10 @@ do
    empCheck=$((RANDOM%3))
    empHrs="$( getWorkHrs $empCheck )"
    totalEmpHrs=$(($totalEmpHrs+$empHrs))
-   dailWage[$totalWorkingDays]="$( getEmpWage $empHrs )"
+   dailWage["Day "$totalWorkingDays]="$( getEmpWage $empHrs )"
 done
 
 totalSalery=$(($totalEmpHrs*$EMP_RATE_PER_HR))
 echo ${dailWage[@]}
+echo ${!dailWage[@]}
+
